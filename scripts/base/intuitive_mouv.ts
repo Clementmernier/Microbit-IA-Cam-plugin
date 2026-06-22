@@ -3,7 +3,6 @@
 //  Mouvements simples pour le robot Maqueen Plus
 // =====================================================
 
-// Sens de rotation du robot
 
 /**
  * Mouvements simples pour le robot Maqueen Plus
@@ -15,7 +14,7 @@ namespace PSO_Maqueen_movements {
     Gauche,
     //% block="droite"
     Droite,
-}
+    };
 
     // Niveaux de vitesse (1 = lent, 5 = rapide)
     export enum Vitesse {
@@ -29,7 +28,7 @@ namespace PSO_Maqueen_movements {
     Rapide     = 180,
     //% block="5 - très rapide"
     TresRapide = 230,
-}
+    };
 
 
     const I2C_ADDR     = 0x10;
