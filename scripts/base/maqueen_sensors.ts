@@ -3,24 +3,23 @@
 //  Capteurs ultrason et ligne pour le Maqueen Plus
 // =====================================================
 
-
-
 /**
  * Capteurs du robot Maqueen Plus
  */
 //% weight=90 color=#9B59B6 icon="\uf06e" block="Capteurs Maqueen"
 namespace PSO_Maqueen_sensors {
-    // Comparaison pour la condition de distance
+
+    // --- Enums exportés (visibles dans les blocs) ---
+
     export enum Comparaison {
         //% block="est inférieure à"
         Inferieur,
         //% block="est égale à"
         Egal,
         //% block="est supérieure à"
-        Superieur
+        Superieur,
     }
 
-    // Sélection du capteur de ligne
     export enum CapteurLigne {
         //% block="L2 (extrême gauche)"
         L2,
@@ -31,36 +30,30 @@ namespace PSO_Maqueen_sensors {
         //% block="R1 (droite)"
         R1,
         //% block="R2 (extrême droite)"
-        R2
+        R2,
     }
 
-    // Couleur détectée par un capteur de ligne
     export enum CouleurSol {
         //% block="noir"
         Noir = 1,
         //% block="blanc"
-        Blanc = 0
+        Blanc = 0,
     }
 
     // --- Constantes internes ---
-    const I2C_ADDR          = 0x10;
-    const LINE_STATE_REG    = 0x1D;
-    const ADC_L2_REG        = 0x26;   // SensorL2
-    const ADC_L1_REG        = 0x24;   // SensorL1
-    const ADC_M_REG         = 0x22;   // SensorM
-    const ADC_R1_REG        = 0x20;   // SensorR1
-    const ADC_R2_REG        = 0x1E;   // SensorR2
+    const I2C_ADDR       = 0x10;
+    const LINE_STATE_REG = 0x1D;
 
-    // Délai microsecondes pour le TRIG ultrason
-    function delayUs(us: number): void {
+    // --- Fonctions internes ---
+
+    export function delayUs(us: number): void {
         let i: number;
         while ((--us) > 0) {
             for (i = 0; i < 1; i++) { }
         }
     }
 
-    // Lecture brute ultrason en cm (même algo que le code d'origine)
-    function lireUltrasonCm(trig: DigitalPin, echo: DigitalPin): number {
+    export function lireUltrasonCm(trig: DigitalPin, echo: DigitalPin): number {
         pins.digitalWritePin(trig, 1);
         delayUs(10);
         pins.digitalWritePin(trig, 0);
@@ -77,8 +70,7 @@ namespace PSO_Maqueen_sensors {
         return Math.round(data);
     }
 
-    // Lecture brute d'un capteur de ligne (état 0 ou 1)
-    function lireEtatLigne(capteur: CapteurLigne): number {
+    export function lireEtatLigne(capteur: CapteurLigne): number {
         pins.i2cWriteNumber(I2C_ADDR, LINE_STATE_REG, NumberFormat.Int8LE);
         let data = pins.i2cReadNumber(I2C_ADDR, NumberFormat.Int8LE);
         switch (capteur) {
@@ -109,10 +101,10 @@ namespace PSO_Maqueen_sensors {
 
     /**
      * Vrai si la distance ultrason vérifie la condition choisie
-     * @param trig       Pin TRIG du capteur, eg: DigitalPin.P13
-     * @param echo       Pin ECHO du capteur, eg: DigitalPin.P14
-     * @param condition  Comparaison à effectuer, eg: Comparaison.Inferieur
-     * @param valeur     Distance de référence en cm, eg: 20
+     * @param trig      Pin TRIG du capteur, eg: DigitalPin.P13
+     * @param echo      Pin ECHO du capteur, eg: DigitalPin.P14
+     * @param condition Comparaison à effectuer, eg: PSO_Maqueen_sensors.Comparaison.Inferieur
+     * @param valeur    Distance de référence en cm, eg: 20
      */
     //% block="la distance ultrason (TRIG %trig ECHO %echo) %condition %valeur cm"
     //% trig.defl=DigitalPin.P13
@@ -132,7 +124,7 @@ namespace PSO_Maqueen_sensors {
 
     /**
      * Donne la couleur détectée par un capteur de ligne (noir ou blanc)
-     * @param capteur Capteur de ligne à lire, eg: CapteurLigne.M
+     * @param capteur Capteur de ligne à lire, eg: PSO_Maqueen_sensors.CapteurLigne.M
      */
     //% block="couleur vue par le capteur %capteur"
     //% weight=80
@@ -142,8 +134,8 @@ namespace PSO_Maqueen_sensors {
 
     /**
      * Vrai si le capteur de ligne détecte la couleur choisie
-     * @param capteur Capteur de ligne à tester, eg: CapteurLigne.M
-     * @param couleur Couleur à détecter, eg: CouleurSol.Noir
+     * @param capteur Capteur de ligne à tester, eg: PSO_Maqueen_sensors.CapteurLigne.M
+     * @param couleur Couleur à détecter, eg: PSO_Maqueen_sensors.CouleurSol.Noir
      */
     //% block="le capteur %capteur voit du %couleur"
     //% weight=70
