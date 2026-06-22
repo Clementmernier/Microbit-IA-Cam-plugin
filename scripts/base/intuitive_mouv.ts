@@ -13,7 +13,7 @@ namespace PSO_Maqueen_movements {
     //% block="gauche"
     Gauche,
     //% block="droite"
-    Droite,
+    Droite
     };
 
     // Niveaux de vitesse (1 = lent, 5 = rapide)
@@ -27,7 +27,7 @@ namespace PSO_Maqueen_movements {
     //% block="4 - rapide"
     Rapide     = 180,
     //% block="5 - très rapide"
-    TresRapide = 230,
+    TresRapide = 230
     };
 
 
