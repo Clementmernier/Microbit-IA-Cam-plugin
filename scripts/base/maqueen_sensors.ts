@@ -3,43 +3,44 @@
 //  Capteurs ultrason et ligne pour le Maqueen Plus
 // =====================================================
 
-// Comparaison pour la condition de distance
-export enum Comparaison {
-    //% block="est inférieure à"
-    Inferieur,
-    //% block="est égale à"
-    Egal,
-    //% block="est supérieure à"
-    Superieur
-}
 
-// Sélection du capteur de ligne
-export enum CapteurLigne {
-    //% block="L2 (extrême gauche)"
-    L2,
-    //% block="L1 (gauche)"
-    L1,
-    //% block="M (milieu)"
-    M,
-    //% block="R1 (droite)"
-    R1,
-    //% block="R2 (extrême droite)"
-    R2
-}
-
-// Couleur détectée par un capteur de ligne
-export enum CouleurSol {
-    //% block="noir"
-    Noir = 1,
-    //% block="blanc"
-    Blanc = 0
-}
 
 /**
  * Capteurs du robot Maqueen Plus
  */
 //% weight=90 color=#9B59B6 icon="\uf06e" block="Capteurs Maqueen"
 namespace PSO_Maqueen_sensors {
+    // Comparaison pour la condition de distance
+    export enum Comparaison {
+        //% block="est inférieure à"
+        Inferieur,
+        //% block="est égale à"
+        Egal,
+        //% block="est supérieure à"
+        Superieur
+    }
+
+    // Sélection du capteur de ligne
+    export enum CapteurLigne {
+        //% block="L2 (extrême gauche)"
+        L2,
+        //% block="L1 (gauche)"
+        L1,
+        //% block="M (milieu)"
+        M,
+        //% block="R1 (droite)"
+        R1,
+        //% block="R2 (extrême droite)"
+        R2
+    }
+
+    // Couleur détectée par un capteur de ligne
+    export enum CouleurSol {
+        //% block="noir"
+        Noir = 1,
+        //% block="blanc"
+        Blanc = 0
+    }
 
     // --- Constantes internes ---
     const I2C_ADDR          = 0x10;
