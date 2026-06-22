@@ -115,7 +115,7 @@ enum protocolAlgorithm {
 
 //% weight=101 color=#e7660b icon="\uf083"
 //% groups=['Instructions générales', 'Conditions']
-namespace IA_Cam_global {
+namespace PSO_IA_Cam_global {
 
     /**
      * HuskyLens init I2C until success

@@ -7,8 +7,9 @@
     "core": "*"
   },
   "files": [
-    "scripts/line_following.ts",
-    "scripts/global_cam.ts"
+    "scripts/camera/line_following.ts",
+    "scripts/camera/global_cam.ts",
+    "scripts/base/intuitive_mouv.ts"
   ],
   "public": true
 }
