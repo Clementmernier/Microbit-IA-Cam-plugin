@@ -113,7 +113,7 @@ enum protocolAlgorithm {
 
 };
 
-//% weight=100 color=#e7660b icon="\uf083"
+//% weight=101 color=#e7660b icon="\uf083"
 //% groups=['Instructions générales', 'Conditions']
 namespace IA_Cam_global {
 
@@ -475,6 +475,16 @@ namespace IA_Cam_global {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
 
 //% weight=100  color=#e7660b icon="\uf083" 
 //% groups=['Autres', 'Affichage sur l'écran', 'Nombre']

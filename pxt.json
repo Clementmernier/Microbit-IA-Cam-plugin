@@ -9,7 +9,8 @@
   "files": [
     "main.ts",
     "custom.ts",
-    "scripts/line_following.ts"
+    "scripts/line_following.ts",
+    "scripts/global_cam.ts"
   ],
   "public": true
 }
