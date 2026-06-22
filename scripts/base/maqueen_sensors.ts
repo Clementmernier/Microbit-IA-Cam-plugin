@@ -17,8 +17,8 @@ namespace PSO_Maqueen_sensors {
         //% block="est égale à"
         Egal,
         //% block="est supérieure à"
-        Superieur,
-    }
+        Superieur
+    };
 
     export enum CapteurLigne {
         //% block="L2 (extrême gauche)"
@@ -30,15 +30,15 @@ namespace PSO_Maqueen_sensors {
         //% block="R1 (droite)"
         R1,
         //% block="R2 (extrême droite)"
-        R2,
-    }
+        R2
+    };
 
     export enum CouleurSol {
         //% block="noir"
         Noir = 1,
         //% block="blanc"
-        Blanc = 0,
-    }
+        Blanc = 0
+    };
 
     // --- Constantes internes ---
     const I2C_ADDR       = 0x10;
