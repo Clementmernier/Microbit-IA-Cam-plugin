@@ -12,32 +12,32 @@ namespace PSO_Maqueen_sensors {
     // --- Enums exportés (visibles dans les blocs) ---
 
     export enum Comparaison {
-        //% block="est inférieure à"
-        Inferieur,
-        //% block="est égale à"
-        Egal,
-        //% block="est supérieure à"
-        Superieur
+    //% block="est inférieure à"
+    Inferieur,
+    //% block="est égale à"
+    Egal,
+    //% block="est supérieure à"
+    Superieur
     };
 
     export enum CapteurLigne {
-        //% block="L2 (extrême gauche)"
-        L2,
-        //% block="L1 (gauche)"
-        L1,
-        //% block="M (milieu)"
-        M,
-        //% block="R1 (droite)"
-        R1,
-        //% block="R2 (extrême droite)"
-        R2
+    //% block="L2 (extrême gauche)"
+    L2,
+    //% block="L1 (gauche)"
+    L1,
+    //% block="M (milieu)"
+    M,
+    //% block="R1 (droite)"
+    R1,
+    //% block="R2 (extrême droite)"
+    R2
     };
 
     export enum CouleurSol {
-        //% block="noir"
-        Noir = 1,
-        //% block="blanc"
-        Blanc = 0
+    //% block="noir"
+    Noir = 1,
+    //% block="blanc"
+    Blanc = 0
     };
 
     // --- Constantes internes ---
