@@ -1,0 +1,15 @@
+{
+  "name": "PSO - AI Cam",
+  "version": "0.0.1",
+  "description": "Plugin to simplify the use of a Microbit AI HuskyLens for Planète Science Occitanie. ",
+  "license": "GNU GPL3",
+  "dependencies": {
+    "core": "*"
+  },
+  "files": [
+    "main.ts",
+    "custom.ts",
+    "scripts/line_following.ts"
+  ],
+  "public": true
+}
