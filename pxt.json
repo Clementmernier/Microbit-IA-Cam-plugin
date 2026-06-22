@@ -9,7 +9,8 @@
   "files": [
     "scripts/camera/line_following.ts",
     "scripts/camera/global_cam.ts",
-    "scripts/base/intuitive_mouv.ts"
+    "scripts/base/intuitive_mouv.ts",
+    "scripts/base/maqueen_sensors.ts"
   ],
   "public": true
 }
