@@ -4,15 +4,21 @@
 // =====================================================
 
 // Sens de rotation du robot
-enum Direction {
+
+/**
+ * Mouvements simples pour le robot Maqueen Plus
+ */
+//% weight=100 color=#FF6B35 icon="\uf1b9" block="Mouvements Maqueen"
+namespace PSO_Maqueen_movements {
+    export enum Direction {
     //% block="gauche"
     Gauche,
     //% block="droite"
     Droite,
 }
 
-// Niveaux de vitesse (1 = lent, 5 = rapide)
-enum Vitesse {
+    // Niveaux de vitesse (1 = lent, 5 = rapide)
+    export enum Vitesse {
     //% block="1 - très lent"
     TresLent   = 40,
     //% block="2 - lent"
@@ -25,11 +31,6 @@ enum Vitesse {
     TresRapide = 230,
 }
 
-/**
- * Mouvements simples pour le robot Maqueen Plus
- */
-//% weight=100 color=#FF6B35 icon="\uf1b9" block="Mouvements Maqueen"
-namespace PSO_Maqueen_movements {
 
     const I2C_ADDR     = 0x10;
     const REG_MOT_G    = 0x00;
