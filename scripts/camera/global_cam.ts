@@ -125,6 +125,21 @@ enum protocolAlgorithm {
 
 };
 
+
+export enum LinePosition {
+    //% block="Très à gauche"
+    VeryLeft = 0,
+    //% block="Gauche"
+    Left = 1,
+    //% block="Centre"
+    Center = 2,
+    //% block="Droite"
+    Right = 3,
+    //% block="Très à droite"
+    VeryRight = 4
+    };
+
+
 //% weight=200 color=#e7660b icon="\uf083"
 //% groups=['Instructions générales', 'Conditions']
 namespace CaméraIA {
@@ -484,26 +499,51 @@ namespace CaméraIA {
     function protocolWrite(buffer: Buffer) {
         pins.i2cWriteBuffer(0x32, buffer, false);
         basic.pause(50)
+
+    }
+    /**
+     * Retourne la position de la ligne
+     */
+    //% block="position de la ligne"
+    //% group="Line Following"
+    //% weight=100
+    export function linePosition(): LinePosition {
+
+        let x1 = readeArrow(1, Content2.xOrigin)
+        let x2 = readeArrow(1, Content2.xTarget)
+
+        if (x1 < 0 || x2 < 0) {
+            return LinePosition.Center
+        }
+
+        let x = (x1 + x2) / 2
+
+        if (x < 40)
+            return LinePosition.VeryLeft
+        else if (x < 120)
+            return LinePosition.Left
+        else if (x < 200)
+            return LinePosition.Center
+        else if (x < 280)
+            return LinePosition.Right
+        else
+            return LinePosition.VeryRight
+    }
+
+    /**
+     * Teste la position de la ligne
+     */
+    //% block="position de la ligne = %position"
+    //% group="Line Following"
+    //% weight=99
+    export function isLinePosition(position: LinePosition): boolean {
+        return linePosition() == position
     }
 
 }
 
 
 
-
-
-export enum LinePosition {
-    //% block="Très à gauche"
-    VeryLeft = 0,
-    //% block="Gauche"
-    Left = 1,
-    //% block="Centre"
-    Center = 2,
-    //% block="Droite"
-    Right = 3,
-    //% block="Très à droite"
-    VeryRight = 4
-    };
 
 
 
@@ -1037,44 +1077,7 @@ namespace CamVariables {
 
 
 
-    /**
-     * Retourne la position de la ligne
-     */
-    //% block="position de la ligne"
-    //% group="Line Following"
-    //% weight=100
-    export function linePosition(): LinePosition {
 
-        let x1 = readeArrow(1, Content2.xOrigin)
-        let x2 = readeArrow(1, Content2.xTarget)
-
-        if (x1 < 0 || x2 < 0) {
-            return LinePosition.Center
-        }
-
-        let x = (x1 + x2) / 2
-
-        if (x < 40)
-            return LinePosition.VeryLeft
-        else if (x < 120)
-            return LinePosition.Left
-        else if (x < 200)
-            return LinePosition.Center
-        else if (x < 280)
-            return LinePosition.Right
-        else
-            return LinePosition.VeryRight
-    }
-
-    /**
-     * Teste la position de la ligne
-     */
-    //% block="position de la ligne = %position"
-    //% group="Line Following"
-    //% weight=99
-    export function isLinePosition(position: LinePosition): boolean {
-        return linePosition() == position
-    }
 
 
 
