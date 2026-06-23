@@ -8,7 +8,7 @@
  * Mouvements simples pour le robot Maqueen Plus
  */
 //% weight=200 color=#FF6B35 icon="\uf1b9" block ="PSO Maqueen Mouvements"
-namespace PSO_Maqueen_movements {
+namespace Mouvements {
     export enum Direction {
     //% block="gauche"
     Gauche,

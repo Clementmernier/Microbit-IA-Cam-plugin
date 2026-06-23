@@ -127,7 +127,7 @@ enum protocolAlgorithm {
 
 //% weight=200 color=#e7660b icon="\uf083"
 //% groups=['Instructions générales', 'Conditions']
-namespace PSO_IA_Cam_global {
+namespace CaméraIA {
 
     /**
      * HuskyLens init I2C until success
@@ -511,7 +511,7 @@ export enum LinePosition {
 
 //% weight=199  color=#e7660b icon="\uf083"
 //% groups=['Autres', 'Affichage sur l'écran', 'Nombre']
-namespace IA_cam_toolbox {
+namespace CamVariables {
 
     let protocolPtr: number[][] = [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]]
     let Protocol_t: number[] = [0, 0, 0, 0, 0, 0]
