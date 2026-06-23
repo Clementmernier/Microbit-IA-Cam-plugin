@@ -492,7 +492,18 @@ namespace PSO_IA_Cam_global {
 
 
 
-
+export enum LinePosition {
+    //% block="Très à gauche"
+    VeryLeft = 0,
+    //% block="Gauche"
+    Left = 1,
+    //% block="Centre"
+    Center = 2,
+    //% block="Droite"
+    Right = 3,
+    //% block="Très à droite"
+    VeryRight = 4
+    };
 
 
 
@@ -1022,18 +1033,7 @@ namespace IA_cam_toolbox {
         basic.pause(100);
         basic.clearScreen();
     }
-    export enum LinePosition {
-    //% block="Très à gauche"
-    VeryLeft = 0,
-    //% block="Gauche"
-    Left = 1,
-    //% block="Centre"
-    Center = 2,
-    //% block="Droite"
-    Right = 3,
-    //% block="Très à droite"
-    VeryRight = 4
-    };
+    
 
 
 
