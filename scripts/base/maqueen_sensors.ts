@@ -6,7 +6,7 @@
 /**
  * Capteurs du robot Maqueen Plus
  */
-//% weight=90 color=#9B59B6 icon="\uf06e" block="Capteurs Maqueen"
+//% weight=200 color=#9B59B6 icon="\uf06e" block="Capteurs Maqueen"
 namespace PSO_Maqueen_sensors {
 
     // --- Enums exportés (visibles dans les blocs) ---

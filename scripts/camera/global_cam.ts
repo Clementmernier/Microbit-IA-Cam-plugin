@@ -125,7 +125,7 @@ enum protocolAlgorithm {
 
 };
 
-//% weight=101 color=#e7660b icon="\uf083"
+//% weight=200 color=#e7660b icon="\uf083"
 //% groups=['Instructions générales', 'Conditions']
 namespace PSO_IA_Cam_global {
 
@@ -509,7 +509,7 @@ export enum LinePosition {
 
 
 
-//% weight=100  color=#e7660b icon="\uf083" 
+//% weight=199  color=#e7660b icon="\uf083" 
 //% groups=['Autres', 'Affichage sur l'écran', 'Nombre']
 namespace IA_cam_toolbox {
 
