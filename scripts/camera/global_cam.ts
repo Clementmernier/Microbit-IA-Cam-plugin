@@ -68,6 +68,18 @@ let FIRST = {
     algorithmType: -1,
     requestID: -1,
 };
+enum LinePosition {
+    //% block="Très à gauche"
+    VeryLeft = 0,
+    //% block="Gauche"
+    Left = 1,
+    //% block="Centre"
+    Center = 2,
+    //% block="Droite"
+    Right = 3,
+    //% block="Très à droite"
+    VeryRight = 4
+};
 
 enum protocolCommand {
     COMMAND_REQUEST = 0x20,
@@ -1009,6 +1021,36 @@ namespace IA_cam_toolbox {
         basic.showIcon(IconNames.Yes);
         basic.pause(100);
         basic.clearScreen();
+    }
+    /**
+     * Retourne la position de la ligne détectée par le HuskyLens
+     */
+    //% block="position de la ligne"
+    //% group="Line Following"
+    //% weight=100
+    export function linePosition(): LinePosition {
+
+        let x1 = readeArrow(1, Content2.xOrigin)
+        let x2 = readeArrow(1, Content2.xTarget)
+
+        // Aucune ligne détectée
+        if (x1 < 0 || x2 < 0) {
+            return LinePosition.Center
+        }
+
+        let x = (x1 + x2) / 2
+
+        if (x < 40) {
+            return LinePosition.VeryLeft
+        } else if (x < 120) {
+            return LinePosition.Left
+        } else if (x < 200) {
+            return LinePosition.Center
+        } else if (x < 280) {
+            return LinePosition.Right
+        } else {
+            return LinePosition.VeryRight
+        }
     }
 
 
