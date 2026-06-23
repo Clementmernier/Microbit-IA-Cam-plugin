@@ -7,7 +7,7 @@
 /**
  * Mouvements simples pour le robot Maqueen Plus
  */
-//% weight=200 color=#FF6B35 icon="\uf1b9" 
+//% weight=200 color=#FF6B35 icon="\uf1b9" block="Mouvements"
 namespace Mouvements {
     export enum Direction {
     //% block="gauche"
