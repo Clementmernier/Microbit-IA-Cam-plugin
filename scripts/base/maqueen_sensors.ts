@@ -82,41 +82,34 @@ namespace PSO_Maqueen_sensors {
         }
     }
 
-    // =========================================================
+        // =========================================================
     //  BLOCS ULTRASON
     // =========================================================
-
+ 
     /**
      * Donne la distance mesurée par le capteur ultrason en cm
-     * @param trig Pin TRIG du capteur, eg: DigitalPin.P13
-     * @param echo Pin ECHO du capteur, eg: DigitalPin.P14
      */
-    //% block="distance ultrason (TRIG %trig ECHO %echo) en cm"
-    //% trig.defl=DigitalPin.P13
-    //% echo.defl=DigitalPin.P14
+    //% block="distance ultrason en cm"
     //% weight=100
-    export function distanceUltrason(trig: DigitalPin, echo: DigitalPin): number {
-        return lireUltrasonCm(trig, echo);
+    export function distanceUltrason(): number {
+        return lireUltrasonCm();
     }
-
+ 
     /**
      * Vrai si la distance ultrason vérifie la condition choisie
-     * @param trig      Pin TRIG du capteur, eg: DigitalPin.P13
-     * @param echo      Pin ECHO du capteur, eg: DigitalPin.P14
      * @param condition Comparaison à effectuer, eg: PSO_Maqueen_sensors.Comparaison.Inferieur
      * @param valeur    Distance de référence en cm, eg: 20
      */
-    //% block="la distance ultrason (TRIG %trig ECHO %echo) %condition %valeur cm"
-    //% trig.defl=DigitalPin.P13
-    //% echo.defl=DigitalPin.P14
+    //% block="la distance ultrason %condition %valeur cm"
     //% valeur.min=0 valeur.max=300
     //% weight=90
-    export function conditionUltrason(trig: DigitalPin, echo: DigitalPin, condition: Comparaison, valeur: number): boolean {
-        let dist = lireUltrasonCm(trig, echo);
+    export function conditionUltrason(condition: Comparaison, valeur: number): boolean {
+        let dist = lireUltrasonCm();
         if (condition == Comparaison.Inferieur) return dist < valeur;
         if (condition == Comparaison.Egal)      return dist == valeur;
         return dist > valeur;
     }
+
 
     // =========================================================
     //  BLOCS CAPTEURS DE LIGNE
