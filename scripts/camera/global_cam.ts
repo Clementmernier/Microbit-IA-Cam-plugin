@@ -1074,7 +1074,86 @@ namespace CamVariables {
         basic.clearScreen();
     }
     
+        /**
+     * Retourne la position horizontale de l'objet
+     * -1 = gauche
+     *  0 = centre
+     *  1 = droite
+     */
+    //% block="position horizontale de l'objet %id"
+    //% weight=70 group="Suivi d'objet"
+    export function positionObjet(id: number): number {
+        let result = huskylens.readeBox(id)
 
+        if (!result) {
+            return 0
+        }
+
+        let centre = result.xCenter
+
+        if (centre < 120) {
+            return -1
+        } else if (centre > 200) {
+            return 1
+        } else {
+            return 0
+        }
+        /**
+     * Retourne une estimation de la distance de l'objet
+     * 1 = très loin
+     * 5 = très proche
+     */
+    //% block="distance estimée de l'objet %id"
+    //% weight=60 group="Suivi d'objet"
+    export function distanceObjet(id: number): number {
+        let result = huskylens.readeBox(id)
+
+        if (!result) {
+            return 0
+        }
+
+        let largeur = result.width
+
+        if (largeur < 30) {
+            return 1
+        } else if (largeur < 60) {
+            return 2
+        } else if (largeur < 100) {
+            return 3        /**
+     * Retourne une estimation de la distance de l'objet
+     * 1 = très loin
+     * 5 = très proche
+     */
+    //% block="distance estimée de l'objet %id"
+    //% weight=60
+    export function distanceObjet(id: number): number {
+        let result = huskylens.readeBox(id)
+
+        if (!result) {
+            return 0
+        }
+
+        let largeur = result.width
+
+        if (largeur < 30) {
+            return 1
+        } else if (largeur < 60) {
+            return 2
+        } else if (largeur < 100) {
+            return 3
+        } else if (largeur < 150) {
+            return 4
+        } else {
+            return 5
+        }
+    }
+        } else if (largeur < 150) {
+            return 4
+        } else {
+            return 5
+        }
+    }
+}
 
 
 
