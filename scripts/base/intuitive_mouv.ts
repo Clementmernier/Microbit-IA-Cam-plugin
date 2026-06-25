@@ -39,17 +39,13 @@ namespace Mouvements {
 
     // Fonction interne : envoie une commande aux deux moteurs
     function moteurs(dirG: number, vitG: number, dirD: number, vitD: number): void {
-    let bufG = pins.createBuffer(3);
-    bufG[0] = REG_MOT_G;   // 0x00
-    bufG[1] = dirG;
-    bufG[2] = vitG;
-    pins.i2cWriteBuffer(I2C_ADDR, bufG);
-
-    let bufD = pins.createBuffer(3);
-    bufD[0] = REG_MOT_D;   // 0x02
-    bufD[1] = dirD;
-    bufD[2] = vitD;
-    pins.i2cWriteBuffer(I2C_ADDR, bufD);
+        let buf = pins.createBuffer(5);
+        buf[0] = REG_MOT_G;
+        buf[1] = dirG;
+        buf[2] = vitG;
+        buf[3] = dirD;
+        buf[4] = vitD;
+        pins.i2cWriteBuffer(I2C_ADDR, buf);
     }
 
     // Fonction interne : arrête les deux moteurs
