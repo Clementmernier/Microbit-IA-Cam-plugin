@@ -618,6 +618,67 @@ namespace CaméraIA {
             return 5 
         }
     }
+
+    export enum PositionObjet {
+    //% block="à gauche"
+    Gauche,
+    //% block="au centre"
+    Centre,
+    //% block="à droite"
+    Droite
+    }
+
+    /**
+     * Vérifie la position d'un objet
+     */
+    //% block="%objet est %position"
+    //% weight=80 group="Suivi d'objet"
+    export function objetEstPosition(objet: Objets, position: PositionObjet): boolean {
+
+        let pos = positionObjet(objet)
+
+        switch (position) {
+            case PositionObjet.Gauche:
+                return pos == -1
+
+            case PositionObjet.Centre:
+                return pos == 0
+
+            case PositionObjet.Droite:
+                return pos == 1
+        }
+
+        return false
+    }
+        export enum DistanceObjet {
+        //% block="proche"
+        Proche,
+        //% block="moyen"
+        Moyen,
+        //% block="loin"
+        Loin
+    }
+
+    /**
+     * Vérifie la distance d'un objet
+     */
+    //% block="%objet est %distance"
+    //% weight=79 group="Suivi d'objet"
+    export function objetEstDistance(objet: Objets, distance: DistanceObjet): boolean {
+
+        let d = distanceObjet(objet)
+
+        switch (distance) {
+            case DistanceObjet.Proche:
+                return d >= 4
+            case DistanceObjet.Moyen:
+                return d == 3
+            case DistanceObjet.Loin:
+                return d <= 2
+        }
+
+        return false
+}
 }
 
 
