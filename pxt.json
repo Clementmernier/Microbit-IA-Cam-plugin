@@ -7,9 +7,12 @@
         "core": "*"
     },
     "files": [
-        "scripts/base/intuitive_mouv.ts"
-
-
+        "scripts/base/intuitive_mouv.ts",
+        "scripts/base/maqueen_sensors.ts",
+        "scripts/camera/cam_global.ts"
     ],
-    "public": true
+    "public": true,
+    "supportedTargets": [
+        "microbit"
+    ]
 }

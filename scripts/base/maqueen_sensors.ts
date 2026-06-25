@@ -92,7 +92,7 @@ namespace PSO_Maqueen_sensors {
     //% block="distance ultrason en cm"
     //% weight=100
     export function distanceUltrason(): number {
-        return lireUltrasonCm();
+        return lireUltrasonCm(DigitalPin.P13,DigitalPin.P14);
     }
  
     /**
@@ -104,7 +104,7 @@ namespace PSO_Maqueen_sensors {
     //% valeur.min=0 valeur.max=300
     //% weight=90
     export function conditionUltrason(condition: Comparaison, valeur: number): boolean {
-        let dist = lireUltrasonCm();
+        let dist = lireUltrasonCm(DigitalPin.P13,DigitalPin.P14);
         if (condition == Comparaison.Inferieur) return dist < valeur;
         if (condition == Comparaison.Egal)      return dist == valeur;
         return dist > valeur;
