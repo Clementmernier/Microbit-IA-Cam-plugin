@@ -565,30 +565,7 @@ namespace CaméraIA {
             return 0
         }
     }
-        /**
-     * Retourne une estimation de la distance de l'objet
-     * 1 = très loin
-     * 5 = très proche
-     */
-    //% block="distance estimée de l'objet %id"
-    //% weight=60 group="Suivi d'objet"
-    export function distanceObjet(id: number): number {
-        let result = huskylens.readeBox(id)
 
-        if (!result) {
-            return 0
-        }
-
-        let largeur = result.width
-
-        if (largeur < 30) {
-            return 1
-        } else if (largeur < 60) {
-            return 2
-        } else if (largeur < 100) {
-            return 3        
-        }
-    }
             
         /**
      * Retourne une estimation de la distance de l'objet
