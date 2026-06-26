@@ -136,8 +136,21 @@ namespace CaméraIA {
     //%block="Initialisation de la caméra" group="Instructions générales"
     //% weight=90
     export function initI2c(): void {
-        init();
+        receive_index = 0;
+        m_i = 16;
         while (!readKnock());
+    }
+
+    function readKnock(): boolean {
+        protocolWriteCommand(protocolCommand.COMMAND_REQUEST_KNOCK);
+        return wait(protocolCommand.COMMAND_RETURN_OK);
+    }
+
+    function protocolWriteCommand(command: number): void {
+        let buffer = husky_lens_protocol_write_begin(command);
+        husky_lens_protocol_write_end();
+        let Buffer = pins.createBufferFromArray(buffer);
+        protocolWrite(Buffer);
     }
 
     /**
@@ -262,13 +275,11 @@ namespace CaméraIA {
     //% block="position horizontale de l'objet %id"
     //% weight=70 group="Suivi d'objet"
     export function positionObjet(id: number): number {
-        let result = huskylens.readeBox(id)
+        let centre = readeBox(id, Content1.xCenter)
 
-        if (!result) {
+        if (centre == -1) {
             return 0
         }
-
-        let centre = result.xCenter
 
         if (centre < 120) {
             return -1
@@ -288,13 +299,11 @@ namespace CaméraIA {
     //% block="distance estimée de l'objet %id"
     //% weight=60
     export function distanceObjet(id: number): number {
-        let result = huskylens.readeBox(id)
+        let largeur = readeBox(id, Content1.width)
 
-        if (!result) {
+        if (largeur == -1) {
             return 0
         }
-
-        let largeur = result.width
 
         if (largeur < 30) {
             return 1
@@ -323,7 +332,7 @@ namespace CaméraIA {
      */
     //% block="%objet est %position"
     //% weight=80 group="Suivi d'objet"
-    export function objetEstPosition(objet: Objets, position: PositionObjet): boolean {
+    export function objetEstPosition(objet: number, position: PositionObjet): boolean {
 
         let pos = positionObjet(objet)
 
@@ -354,7 +363,7 @@ namespace CaméraIA {
      */
     //% block="%objet est %distance"
     //% weight=79 group="Suivi d'objet"
-    export function objetEstDistance(objet: Objets, distance: DistanceObjet): boolean {
+    export function objetEstDistance(objet: number, distance: DistanceObjet): boolean {
 
         let d = distanceObjet(objet)
 

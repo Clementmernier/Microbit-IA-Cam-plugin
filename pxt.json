@@ -9,7 +9,7 @@
     "files": [
         "scripts/base/intuitive_mouv.ts",
         "scripts/base/maqueen_sensors.ts",
-        "scripts/camera/cam_global.ts"
+        "scripts/camera/global_cam.ts"
     ],
     "public": true,
     "supportedTargets": [
