@@ -8,7 +8,28 @@
  */
 //% weight=200 color=#9B59B6 icon="\uf06e" block="Capteurs"
 namespace PSO_Maqueen_sensors {
+        /**
+     * Initialise la communication I2C avec le Maqueen Plus
+     * À appeler une fois au démarrage du programme
+     */
+    //% block="initialiser le Maqueen"
+    //% weight=200
+    export function initialiser(): void {
+        let buf = pins.createBuffer(2);
+        buf[0] = 0x49;
+        buf[1] = 1;
+        pins.i2cWriteBuffer(I2C_ADDR, buf);
+        basic.pause(100);
 
+        let version = 0;
+        pins.i2cWriteNumber(I2C_ADDR, 0x32, NumberFormat.Int8LE);
+        version = pins.i2cReadNumber(I2C_ADDR, NumberFormat.Int8LE);
+        while (version == 0) {
+            basic.pause(500);
+            pins.i2cWriteNumber(I2C_ADDR, 0x32, NumberFormat.Int8LE);
+            version = pins.i2cReadNumber(I2C_ADDR, NumberFormat.Int8LE);
+        }
+    }
     // --- Enums exportés (visibles dans les blocs) ---
 
     export enum Comparaison {
